@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Happy Birthday Bestie!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            perspective: 1000px;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            background: #121212;
+        }
+        
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
+        }
+        
+        .glow {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(78, 84, 200, 0.2) 0%, transparent 70%);
+            animation: pulse 8s infinite alternate;
+            z-index: -1;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 0.3; transform: scale(0.8); }
+            100% { opacity: 0.6; transform: scale(1.2); }
+        }
+        
+        .card {
+            width: 90%;
+            max-width: 400px;
+            height: auto;
+            min-height: 500px;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 1s;
+            cursor: pointer;
+            margin: 20px;
+        }
+        
+        .card:hover {
+            transform: rotateY(180deg);
+        }
+        
+        .card-front, .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .card-front {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            border: 2px solid #4e54c8;
+        }
+        
+        .card-back {
+            background: linear-gradient(135deg, #4e54c8 0%, #8f94fb 100%);
+            color: white;
+            transform: rotateY(180deg);
+        }
+        
+        h1 {
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            margin-bottom: 20px;
+            color: white;
+            text-shadow: 0 0 10px rgba(255,255,255,0.3);
+        }
+        
+        p {
+            color: #ccc;
+            margin-bottom: 30px;
+            font-size: clamp(1rem, 3vw, 1.2rem);
+        }
+        
+        .btn {
+            margin-top: 30px;
+            padding: 12px 30px;
+            background: white;
+            color: #4e54c8;
+            border: none;
+            border-radius: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: clamp(0.9rem, 3vw, 1.1rem);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        
+        .btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+        }
+        
+        .balloon {
+            position: absolute;
+            width: 80px;
+            height: 100px;
+            border-radius: 50%;
+            z-index: -1;
+            animation: float 8s ease-in-out infinite;
+            opacity: 0.7;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) translateX(0) rotate(0deg); }
+            50% { transform: translateY(-100px) translateX(20px) rotate(10deg); }
+        }
+        
+        @media (max-width: 600px) {
+            .card {
+                min-height: 400px;
+            }
+            
+            .balloon {
+                width: 60px;
+                height: 80px;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="particles-js"></div>
+    <div class="glow"></div>
+    
+    <!-- Floating balloons -->
+    <div class="balloon" style="left:10%;top:80%;background:rgba(255,0,0,0.3);animation-delay:0s;"></div>
+    <div class="balloon" style="left:30%;top:70%;background:rgba(0,255,0,0.3);animation-delay:1s;"></div>
+    <div class="balloon" style="left:70%;top:60%;background:rgba(0,0,255,0.3);animation-delay:2s;"></div>
+    <div class="balloon" style="left:85%;top:90%;background:rgba(255,255,0,0.3);animation-delay:3s;"></div>
+    
+    <div class="card">
+        <div class="card-front">
+            <h1>Hey Bestie!</h1>
+            <p>Your special day deserves a special surprise...</p>
+            <p>Click or hover to open!</p>
+        </div>
+        <div class="card-back">
+            <h1>Happy Birthday!</h1>
+            <p>To the world's greatest friend</p>
+            <p>Click below to begin your adventure</p>
+            <button class="btn" onclick="window.location.href='page2.html'">Let's Celebrate!</button>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        particlesJS("particles-js", {
+            "particles": {
+                "number": { "value": 60, "density": { "enable": true, "value_area": 800 } },
+                "color": { "value": "#4e54c8" },
+                "shape": { "type": "circle" },
+                "opacity": { "value": 0.5, "random": true },
+                "size": { "value": 3, "random": true },
+                "line_linked": { "enable": true, "distance": 150, "color": "#4e54c8", "opacity": 0.4, "width": 1 },
+                "move": { "enable": true, "speed": 2, "direction": "none", "random": true, "straight": false, "out_mode": "out", "bounce": false }
+            }
+        });
+    </script>
+</body>
+</html>

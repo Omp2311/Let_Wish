@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Happy Birthday Best Friend!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+            background: #0a0a0a;
+            padding: 20px;
+        }
+        
+        .bg-animation {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(78, 84, 200, 0.15) 0%, transparent 30%),
+                radial-gradient(circle at 80% 70%, rgba(143, 148, 251, 0.15) 0%, transparent 30%);
+            z-index: -2;
+            animation: pulse 8s infinite alternate;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 0.3; transform: scale(0.95); }
+            100% { opacity: 0.6; transform: scale(1.05); }
+        }
+        
+        h1 {
+            color: white;
+            text-shadow: 0 0 15px rgba(143, 148, 251, 0.7);
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            z-index: 1;
+        }
+        
+        p {
+            color: #ddd;
+            max-width: 600px;
+            text-align: center;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            font-size: clamp(1rem, 3vw, 1.2rem);
+            z-index: 1;
+        }
+        
+        .party-container {
+            position: relative;
+            width: 100%;
+            height: 40vh;
+            max-height: 400px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px 0;
+        }
+        
+        .cake {
+            width: 180px;
+            height: 130px;
+            position: relative;
+            transform-style: preserve-3d;
+            animation: bounce 2s infinite alternate;
+            cursor: pointer;
+        }
+        
+        @keyframes bounce {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-20px); }
+        }
+        
+        .cake-layer {
+            position: absolute;
+            width: 100%;
+            height: 40px;
+            background: #f8d7da;
+            border-radius: 10px;
+            box-shadow: inset 0 0 15px rgba(0,0,0,0.2);
+        }
+        
+        .layer1 {
+            bottom: 0;
+            background: #ff9a9e;
+            width: 180px;
+        }
+        
+        .layer2 {
+            bottom: 40px;
+            background: #fad0c4;
+            width: 160px;
+            left: 10px;
+        }
+        
+        .candle {
+            position: absolute;
+            width: 8px;
+            height: 40px;
+            background: white;
+            bottom: 80px;
+            left: 86px;
+            z-index: 10;
+        }
+        
+        .flame {
+            position: absolute;
+            width: 16px;
+            height: 30px;
+            background: #ff9e00;
+            border-radius: 50% 50% 20% 20%;
+            bottom: 120px;
+            left: 82px;
+            z-index: 11;
+            animation: flicker 0.5s infinite alternate;
+            box-shadow: 0 0 15px #ff9e00, 0 0 45px #ff9e00;
+        }
+        
+        @keyframes flicker {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(1.1); opacity: 0.8; }
+        }
+        
+        .friend-facts {
+            background: rgba(30, 30, 30, 0.7);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+            max-width: 600px;
+            width: 90%;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(78, 84, 200, 0.3);
+            z-index: 1;
+        }
+        
+        .friend-facts h3 {
+            color: #8f94fb;
+            margin-bottom: 15px;
+            text-align: center;
+            font-size: 1.3rem;
+        }
+        
+        .friend-facts ul {
+            list-style-type: none;
+        }
+        
+        .friend-facts li {
+            color: #ddd;
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 25px;
+            font-size: clamp(0.9rem, 3vw, 1rem);
+        }
+        
+        .friend-facts li:before {
+            content: "★";
+            color: #4e54c8;
+            position: absolute;
+            left: 0;
+        }
+
+        /* New Wishes Section */
+        .wishes-container {
+            background: rgba(30, 30, 30, 0.7);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 20px 0;
+            max-width: 600px;
+            width: 90%;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(78, 84, 200, 0.3);
+            z-index: 1;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .wishes-container::before {
+            content: "";
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #4e54c8, #8f94fb, #4e54c8);
+            background-size: 200% 200%;
+            z-index: -1;
+            border-radius: 16px;
+            animation: borderGlow 3s linear infinite;
+        }
+
+        @keyframes borderGlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .wishes-container h3 {
+            color: #8f94fb;
+            margin-bottom: 15px;
+            text-align: center;
+            font-size: 1.3rem;
+        }
+
+        .wishes-text {
+            color: black;
+            font-size: clamp(0.9rem, 3vw, 1rem);
+            line-height: 1.6;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .wishes-signature {
+            color: black;
+            font-style: italic;
+            text-align: right;
+            margin-top: 15px;
+            font-size: 1.1rem;
+        }
+        
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #f00;
+            border-radius: 50%;
+            animation: fall 5s linear infinite;
+            opacity: 0;
+            z-index: 0;
+        }
+        
+        @keyframes fall {
+            0% { transform: translateY(-100vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+        }
+        
+        .emoji-float {
+            position: absolute;
+            font-size: 24px;
+            animation: floatUp 10s linear infinite;
+            z-index: 0;
+            opacity: 0.8;
+        }
+        
+        @keyframes floatUp {
+            0% { transform: translateY(100vh) translateX(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-100px) translateX(100px) rotate(360deg); opacity: 0; }
+        }
+        
+        @media (max-width: 600px) {
+            .cake {
+                width: 150px;
+                height: 110px;
+            }
+            
+            .layer1 {
+                width: 150px;
+            }
+            
+            .layer2 {
+                width: 130px;
+                bottom: 35px;
+            }
+            
+            .candle {
+                left: 71px;
+                bottom: 70px;
+            }
+            
+            .flame {
+                left: 68px;
+                bottom: 110px;
+            }
+            
+            .friend-facts, .wishes-container {
+                padding: 15px;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="bg-animation"></div>
+    
+    <h1>Happy Birthday Manisha </h1>
+    
+    <div class="party-container">
+        <div class="cake">
+            <div class="cake-layer layer1"></div>
+            <div class="cake-layer layer2"></div>
+            <div class="candle"></div>
+            <div class="flame"></div>
+        </div>
+    </div>
+    
+    <p>Wishing the most amazing birthday to my partner in crime! Thanks for all the laughs, support, and unforgettable memories.</p>
+    
+    <div class="friend-facts">
+        <h3>Why You're An Awesome Friend:</h3>
+        <ul>
+            <li>You're always there when I need you</li>
+            <li>You make even ordinary days fun</li>
+            <li>Your Hardwork inspires me</li>
+            <li>Nobody understands my weirdness like you do</li>
+        </ul>
+    </div>
+
+    <!-- New Wishes Section -->
+    <div class="wishes-container">
+        <h3>My Heartfelt Wishes For You</h3>
+        <p class="wishes-text">
+            On your special day, I wish you endless happiness, incredible adventures, 
+            and all the success you deserve. May this year bring you closer to your dreams 
+            and fill your life with joy and laughter.
+        </p>
+        <p class="wishes-text">
+            Thank you for being the kind of friend who makes life brighter just by being in it. 
+            I cherish our friendship more than words can express.
+        </p>
+        <p class="wishes-text">
+            May your birthday be as amazing as you are, and may the year ahead be your best one yet!
+        </p>
+        <p class="wishes-signature">With love,<br>Om</p>
+    </div>
+    
+    <script>
+        // Create confetti and emojis
+        const colors = ['#4e54c8', '#8f94fb', '#ff9a9e', '#fad0c4', '#a18cd1'];
+        const emojis = ['🎉', '🎈', '🎁', '🥳', '🎊', '❤️', '✨'];
+        
+        function createConfetti() {
+            const confetti = document.createElement('div');
+            confetti.classList.add('confetti');
+            confetti.style.left = Math.random() * 100 + 'vw';
+            confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            confetti.style.animationDuration = Math.random() * 3 + 2 + 's';
+            confetti.style.width = Math.random() * 8 + 8 + 'px';
+            confetti.style.height = confetti.style.width;
+            document.body.appendChild(confetti);
+            
+            setTimeout(() => {
+                confetti.remove();
+            }, 5000);
+        }
+        
+        function createEmoji() {
+            const emoji = document.createElement('div');
+            emoji.classList.add('emoji-float');
+            emoji.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
+            emoji.style.left = Math.random() * 100 + 'vw';
+            emoji.style.animationDuration = Math.random() * 5 + 5 + 's';
+            emoji.style.fontSize = Math.random() * 15 + 15 + 'px';
+            document.body.appendChild(emoji);
+            
+            setTimeout(() => {
+                emoji.remove();
+            }, 10000);
+        }
+        
+        // Start animations
+        setInterval(createConfetti, 200);
+        setInterval(createEmoji, 1000);
+        
+        // Blow out candle on click
+        document.querySelector('.cake').addEventListener('click', function() {
+            const flame = document.querySelector('.flame');
+            if (flame.style.display !== 'none') {
+                flame.style.display = 'none';
+                // Burst of extra confetti and emojis
+                for(let i = 0; i < 20; i++) {
+                    setTimeout(createConfetti, i * 50);
+                    setTimeout(createEmoji, i * 100);
+                }
+                // Play sound if needed (uncomment to add)
+                // new Audio('pop.mp3').play();
+            }
+        });
+
+        // Animate wishes container on scroll into view
+        const wishesContainer = document.querySelector('.wishes-container');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 1s forwards';
+                    // Extra celebration when wishes come into view
+                    for(let i = 0; i < 15; i++) {
+                        setTimeout(createConfetti, i * 100);
+                    }
+                }
+            });
+        }, { threshold: 0.1 });
+
+        observer.observe(wishesContainer);
+
+        // Add the animation to CSS
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeInUp {
+                0% { opacity: 0; transform: translateY(20px); }
+                100% { opacity: 1; transform: translateY(0); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
